@@ -18,9 +18,10 @@ turtle.hideturtle()
 # n=4 to n=6 is a good start.  After that you have to wait a really long
 # time for the whole thing to get drawn.  n=11 is pretty much the maximum.
 
-def fractal(n,size,fillcolor='white'):
-    turtle.begin_fill()
-    turtle.fillcolor(fillcolor)
+def fractal(n,size,fill=False,fillcolor='white'):
+    if fill:
+        turtle.begin_fill()
+        turtle.fillcolor(fillcolor)
     startL=[1,1,1]    #This gives just a regular triangle.
                       #[0,0] will give a zigzag, like a frieze pattern.
     lens=lengths(startL,n)  #lengths of each edge
@@ -33,7 +34,8 @@ def fractal(n,size,fillcolor='white'):
             turtle.right(120)
         else:
             turtle.left(120)
-    turtle.end_fill()
+    if fill:
+        turtle.end_fill()
 
 # The following two functions, 'lengths' and 'binary', give the order of
 # short/long line segments in the nth iteration of the fractal. 1 means
